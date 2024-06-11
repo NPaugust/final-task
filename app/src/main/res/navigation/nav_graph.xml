@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.avgust.final_task.ui.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash_screen" >
+        <action
+            android:id="@+id/action_splashFragment_to_viewPagerFragment"
+            app:destination="@id/viewPagerFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_productsFragment"
+            app:destination="@id/navigation"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_splashFragment_to_authPagerFragment"
+            app:destination="@id/authPagerFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/viewPagerFragment"
+        android:name="com.avgust.final_task.viewpager.ViewPagerFragment"
+        android:label="fragment_view_pager"
+        tools:layout="@layout/fragment_view_pager" >
+        <action
+            android:id="@+id/action_viewPagerFragment_to_productsFragment"
+            app:destination="@id/navigation"
+            app:popUpTo="@id/viewPagerFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_viewPagerFragment_to_authPagerFragment"
+            app:destination="@id/authPagerFragment"
+            app:popUpTo="@id/viewPagerFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/authPagerFragment"
+        android:name="com.avgust.final_task.viewpager.AuthPagerFragment"
+        android:label="fragment_auth_pager"
+        tools:layout="@layout/fragment_auth_pager" >
+        <action
+            android:id="@+id/action_authPagerFragment_to_productsFragment"
+            app:destination="@id/navigation"
+            app:popUpTo="@id/authPagerFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <navigation android:id="@+id/navigation"
+        app:startDestination="@id/productsFragment">
+        <fragment
+            android:id="@+id/profileFragment"
+            android:name="com.avgust.final_task.ui.screens.profile.ProfileFragment"
+            android:label="Profile"
+            tools:layout="@layout/fragment_profile" >
+            <action
+                android:id="@+id/action_profileFragment_to_authPagerFragment"
+                app:destination="@id/authPagerFragment"
+                app:popUpTo="@id/profileFragment"
+                app:popUpToInclusive="true" />
+        </fragment>
+        <fragment
+            android:id="@+id/productsFragment"
+            android:name="com.avgust.final_task.ui.screens.foodlist.ProductsFragment"
+            android:label="Products"
+            tools:layout="@layout/fragment_products" >
+            <action
+                android:id="@+id/action_productsFragment_to_basketFragment"
+                app:destination="@id/basketFragment" />
+            <action
+                android:id="@+id/action_productsFragment_to_detailsFragment"
+                app:destination="@id/detailsFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/searchFragment"
+            android:name="com.avgust.final_task.ui.screens.search.SearchFragment"
+            android:label="Search"
+            tools:layout="@layout/fragment_search" >
+            <action
+                android:id="@+id/action_searchFragment_to_detailsFragment"
+                app:destination="@id/detailsFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/basketFragment"
+            android:name="com.avgust.final_task.ui.screens.basket.BasketFragment"
+            android:label="Basket"
+            tools:layout="@layout/fragment_basket" />
+        <fragment
+            android:id="@+id/detailsFragment"
+            android:name="com.avgust.final_task.ui.screens.details.DetailsFragment"
+            android:label="Detail"
+            tools:layout="@layout/fragment_details" >
+            <argument
+                android:name="productDto"
+                app:argType="com.avgust.final_task.data.model.ProductsItem" />
+        </fragment>
+    </navigation>
+</navigation>
